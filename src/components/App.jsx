@@ -1,16 +1,62 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import React, { Component } from 'react';
+import FeedbackOptions from './FeedbackOptions';
+import Statistics from './Statistics';
+import Section from './Section';
+import Notification from './Notification';
+import './App.scss';
+
+const controls = ['good', 'neutral', 'bad'];
+
+class App extends Component {
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
+
+  handleOnClick = e => {
+    this.setState(prevState => ({
+      [e.target.name]: prevState[e.target.name] + 1,
+    }));
+  };
+
+  getTotalCount = () => {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  };
+
+  getPositivePercentage = () => {
+    const { good } = this.state;
+    const positiveRate = Math.trunc((good / this.getTotalCount()) * 100);
+    return positiveRate;
+  };
+
+  render() {
+    const { good, neutral, bad } = this.state;
+    return (
+      <div className="container">
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            controls={controls}
+            onLeaveFeedback={this.handleOnClick}
+          />
+        </Section>
+        <Section title="Statistics" customClassName="container--section">
+          {this.getTotalCount() > 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.getTotalCount()}
+              positivePercentage={this.getPositivePercentage()}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
+        </Section>
+      </div>
+    );
+  }
+}
+
+export default App;
