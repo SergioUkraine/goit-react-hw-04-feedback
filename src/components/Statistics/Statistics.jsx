@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import './Statistics.scss';
+import PropTypes from 'prop-types';
 
 class Statistics extends Component {
   keys = () => {
@@ -21,7 +22,7 @@ class Statistics extends Component {
 
   render() {
     return (
-      <div className='statistics'>
+      <div className="statistics">
         {this.getStats()}
         <p>Total: {this.props.total}</p>
         <p>Positive feedback: {this.props.positivePercentage}%</p>
@@ -29,5 +30,13 @@ class Statistics extends Component {
     );
   }
 }
+
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
+};
 
 export default Statistics;

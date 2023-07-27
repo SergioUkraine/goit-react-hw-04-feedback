@@ -37,7 +37,7 @@ class App extends Component {
       <div className="container">
         <Section title="Please leave feedback">
           <FeedbackOptions
-            controls={controls}
+            options={controls}
             onLeaveFeedback={this.handleOnClick}
           />
         </Section>
