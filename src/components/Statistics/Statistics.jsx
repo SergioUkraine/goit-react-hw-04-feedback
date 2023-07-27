@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
 import './Statistics.scss';
 import PropTypes from 'prop-types';
 
 class Statistics extends Component {
-  keys = () => {
-    return this.props.controls.map(() => nanoid());
-  };
-
   getStats = () => {
     const { good, neutral, bad } = this.props;
 
