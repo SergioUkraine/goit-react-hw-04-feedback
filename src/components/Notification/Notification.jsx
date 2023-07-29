@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Notification.scss';
 import PropTypes from 'prop-types';
 
-class Notification extends Component {
-  render() {
-    return <p className="notification">{this.props.message}</p>;
-  }
-}
+const Notification = ({ message }) => {
+  return <p className="notification">{message}</p>;
+};
 
 Notification.propTypes = {
   message: PropTypes.string.isRequired,
