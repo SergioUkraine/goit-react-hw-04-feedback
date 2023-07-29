@@ -5,8 +5,6 @@ import Section from './Section';
 import Notification from './Notification';
 import './App.scss';
 
-const controls = ['good', 'neutral', 'bad'];
-
 class App extends Component {
   state = {
     good: 0,
@@ -37,7 +35,7 @@ class App extends Component {
       <div className="container">
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={controls}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.handleOnClick}
           />
         </Section>
