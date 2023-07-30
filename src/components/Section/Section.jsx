@@ -1,23 +1,19 @@
 import React from 'react';
-import './Section.scss';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { SectionContainer, SectionHeader } from './Section.styled';
 
-const Section = ({ title, children, customClassName }) => {
-  const sectionClassName = classNames(customClassName, 'section');
-
+const Section = ({ title, children }) => {
   return (
-    <div className={sectionClassName}>
-      <h2 className="section__title">{title}</h2>
+    <SectionContainer>
+      <SectionHeader>{title}</SectionHeader>
       {children}
-    </div>
+    </SectionContainer>
   );
 };
 
 Section.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired,
-  customClassName: PropTypes.string,
 };
 
 export default Section;
