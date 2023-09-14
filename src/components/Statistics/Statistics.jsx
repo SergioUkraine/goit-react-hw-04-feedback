@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StatisticsContainer } from './Statistics.styled';
 
-const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+function Statistics({ good, neutral, bad, total, positivePercentage }) {
   return (
     <StatisticsContainer>
       <p>Good: {good}</p>
@@ -12,7 +12,7 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
       <p>Positive feedback: {positivePercentage}%</p>
     </StatisticsContainer>
   );
-};
+}
 
 Statistics.propTypes = {
   good: PropTypes.number.isRequired,
